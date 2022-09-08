@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 import { IndicadoresRoutingModule } from './indicadores-routing.module';
 import { MaterialModule } from '../material/material.module';
 
@@ -19,6 +21,7 @@ import { HomeComponent } from './pages/home/home.component';
   ],
   imports: [
     CommonModule,
+    FlexLayoutModule ,
     MaterialModule,
     IndicadoresRoutingModule
   ]

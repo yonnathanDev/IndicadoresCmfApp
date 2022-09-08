@@ -4,11 +4,25 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
+
 @NgModule({
   exports: [
     MatSliderModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+
+    MatGridListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatDividerModule,
+    MatTableModule,
+    MatCardModule
   ]
 })
 export class MaterialModule { }
