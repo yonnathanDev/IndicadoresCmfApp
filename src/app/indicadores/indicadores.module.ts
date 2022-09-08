@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { IndicadoresRoutingModule } from './indicadores-routing.module';
+import { MaterialModule } from '../material/material.module';
 
 import { ListadoComponent } from './pages/listado/listado.component';
 import { DetalleComponent } from './pages/detalle/detalle.component';
@@ -18,6 +19,7 @@ import { HomeComponent } from './pages/home/home.component';
   ],
   imports: [
     CommonModule,
+    MaterialModule,
     IndicadoresRoutingModule
   ]
 })
