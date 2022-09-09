@@ -11,5 +11,6 @@ export class DetalleComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
 }
