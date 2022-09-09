@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import * as moment from 'moment/moment';
 import { last } from 'rxjs';
-import { Indicadores } from '../../interfaces/indicadores';
+import { Dolar } from '../../interfaces/indicadores';
 import { IndicadorService } from '../../services/indicador.service';
 
 export interface PeriodicElement {
@@ -34,7 +34,7 @@ export class ListadoComponent implements OnInit {
   ];
   displayedColumns: string[] = ['name', 'position'];
 
-  indicador!: Indicadores;
+  indicador!: Dolar;
 
   constructor( private indicadorService: IndicadorService ) { }
 
@@ -45,11 +45,11 @@ export class ListadoComponent implements OnInit {
     console.log(date)
     let id: string = '';
 
-    this.indicadorService.getGraficoDetalle( id )
-        .subscribe( (indicador) => {
-          // this.indicador = indicador;
-          console.log(indicador);
-        })
+    // this.indicadorService.getIndicadorDetalle(  )
+    //     .subscribe( (indicador) => {
+    //       // this.indicador = indicador;
+    //       console.log(indicador);
+    //     })
 
 
   
