@@ -84,7 +84,7 @@ export class DetalleComponent implements OnInit {
     // console.log( this.op, 'op' )
     
 
-    this.indicadorService.getData( this.op )
+    this.indicadorService.getDataDetalle( this.op )
         .subscribe( ({data}) => {
           
           this.indicador = data[ this.op.type ];

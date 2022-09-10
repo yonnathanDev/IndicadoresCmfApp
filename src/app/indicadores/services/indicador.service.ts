@@ -15,38 +15,26 @@ export class IndicadorService {
   
   constructor( private http: HttpClient ) { }
 
+  // Obtiene los datos para el detalle
   getIndicadorDetalle( op: option ): Observable<Indicador>{
-
+    console.log('url-detalle')
     let url = '';
-    // console.log( op, 'aray-op');
 
     if( op.category === 1 ){
       // ultimos 30 días (añadir un día más)
-      // url = `${ this.apiUrl }/dolar/posteriores/2022/08/dias/10?apikey=${ this.ApiKey }&formato=json`;
       url = `${ this.apiUrl }/${ op.name }/posteriores/${ op.year }/${ op.month}/dias/${ op.day}?apikey=${ this.ApiKey }&formato=json`;
-      // console.log(url, 'url Dolar')
-    }else if( op.category === 2){
-      // Año actual
-      // https://api.cmfchile.cl/api-sbifv3/recursos_api/utm/posteriores/2021/09?
-      url = `${ this.apiUrl }/${ op.name }/posteriores/${ op.year }/${ op.month }?apikey=${ this.ApiKey }&formato=json`; 
-      // console.log(url, 'url UTM')
-    }else if( op.category === 3){
-      // 
-      url = `${ this.apiUrl }/${ op.name }/${ op.year }?apikey=${ this.ApiKey }&formato=json`; 
-      // console.log(url, 'url UTM')
 
     }else{
-      url = `${ this.apiUrl }/${ op.name }/posteriores/${ op.year }/${ op.month}/dias/${ op.day}?apikey=${ this.ApiKey }&formato=json`;
-      // https://api.cmfchile.cl/api-sbifv3/recursos_api/UF/posteriores/2010/01/dias/01?
-      // https://api.cmfchile.cl/api-sbifv3/recursos_api/uf/periodo/2009/2010?
+      // Año actual
+      url = `${ this.apiUrl }/${ op.name }/${ op.year }?apikey=${ this.ApiKey }&formato=json`; 
+
     }
     
     return this.http.get<Indicador>( url );
-
   }
 
-
-  getData( op: option ){
+  // Manipula los datos para el detalle
+  getDataDetalle( op: option ){
     
     return this.getIndicadorDetalle( op )
         .pipe(
@@ -54,7 +42,6 @@ export class IndicadorService {
           map(  resp =>  {
 
             const  data = Object( resp );
-            // console.log(data, 's-map')
 
             return {data};
           }),
@@ -63,7 +50,38 @@ export class IndicadorService {
   }
 
 
+  // Obtiene los datos para el grafico
+  getIndicadoresGrafico( option: option  ): Observable<Indicador>{
+    console.log('url-grafico')
+    let url = '';
 
+    if( option.category === 1){
+      // Ultimos 10 días para UF, Dolar, Euro / parte desde el día posterior del indicado
+      url = `${ this.apiUrl }/${ option.name }/posteriores/${ option.year }/${ option.month}/dias/${ option.day}?apikey=${ this.ApiKey }&formato=json`;
+
+    }else{
+      // Ultimos 12 meses para UT; he IPC / parte desde el mes posterior del indicado
+      url = `${ this.apiUrl }/${ option.name }/posteriores/${ option.year }/${ option.month }?apikey=${ this.ApiKey }&formato=json`; 
+    }    
+
+    return this.http.get<Indicador>( url );
+  }
+
+  // Manipula los datos pata el gráfico
+  getDataGrafico( option: option ){
+    
+    return this.getIndicadoresGrafico( option )
+        .pipe(
+          // delay(100),
+          map(  resp =>  {
+
+            const  data = Object( resp );
+
+            return {data};
+          }),
+          catchError( err => of(err.error.msg) )
+        )
+  }
 
 
 

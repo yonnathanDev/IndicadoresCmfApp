@@ -22,14 +22,14 @@
     },
     {
         "name": "ipc",
-        "category": 3,
+        "category": 2,
         "type": "IPCs",
         "measureUnit": "pesos",
         "icon": "ipc.png"
     },
     {
         "name": "utm",
-        "category": 3,
+        "category": 2,
         "type": "UTMs",
         "measureUnit": "pesos",
         "icon": "utm.png"

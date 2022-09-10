@@ -64,7 +64,7 @@ export class GraficoComponent implements OnInit {
    
     let _id = this._router.snapshot.paramMap.get('id');
 
-    console.log(_id, 'id');
+    // console.log(_id, 'id');
 
     let ind =  this.indicadores.find(x => x.name == _id);
 
@@ -73,13 +73,13 @@ export class GraficoComponent implements OnInit {
       return;
     }
 
-    console.log(ind, 'ind')
+    // console.log(ind, 'ind')
     this.op.name = ind ? ind.name : '' ;
     this.op.type = ind ? ind.type : '' ;
     this.op.category = ind ? ind.category : 1 ;
     this.op.unidadMedida = ind ? ind.measureUnit : '';
 
-    console.log(this.op, 'op')
+    // console.log(this.op, 'op')
 
 
     // this.titulo = `${ this.op.name } `;
@@ -91,9 +91,9 @@ export class GraficoComponent implements OnInit {
     this.unidadMedida = this.op.unidadMedida;
     
     this.graficoSubtitulo = ( this.op.category == 1 ? 'Últimos 10 días.' : 'Últimos 12 meses') 
-    console.log(this.graficoSubtitulo)
+    // console.log(this.graficoSubtitulo)
 
-    this.indicadorService.getData( this.op )
+    this.indicadorService.getDataGrafico( this.op )
         .subscribe( ({data}) => {
 
           let objeto = data[ this.op.type ];
@@ -107,7 +107,7 @@ export class GraficoComponent implements OnInit {
             
             if( this.op.name == 'uf' ){
               if( objeto[i].Fecha === '2022-09-10'){
-                console.log('valorFecha', header )
+                // console.log('valorFecha', header )
                 break;
               }
             }
@@ -119,7 +119,7 @@ export class GraficoComponent implements OnInit {
           this.graficoTitulo = price ? price : 0.0;  
           this.fecha = date ? date : 'No se encontró la Fecha'; 
 
-          console.log( price, date )
+          // console.log( price, date )
 
           const colors = ['#6405F0','#0724E3', '#05A0F0','#0724E3', '#05A0F0'];
 
@@ -185,22 +185,12 @@ export class GraficoComponent implements OnInit {
       this.op.year = date.format('YYYY');
       this.op.month = date.format('MM');
       this.op.day = date.format('DD');
-    }else if(option === 2){
-      // Devuelve el año actual
-      // date = today.subtract(12, 'months').format('YYYY-MM');
-      this.op.year = today.format('YYYY')
-    }else if( option === 3) {
-      // Los ultimos 12 meses
-      let date = today.subtract(12, 'months');
+    }else{
+      // Los ultimos 12 meses, agregar un mes más
+      let date = today.subtract(13, 'months');
       this.op.year = date.format('YYYY');
       this.op.month = date.format('MM');
       // console.log(date, 'date-month')
-    } else {
-      let date = today.subtract(10, 'days');
-      this.op.year = date.format('YYYY');
-      this.op.month = date.format('MM');
-      this.op.day = date.format('DD');
-      console.log( date.format('YYYY-MM-DD'), 'datev1' )
     }
 
   }  
