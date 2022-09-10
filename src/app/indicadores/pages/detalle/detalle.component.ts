@@ -16,6 +16,7 @@ export interface option {
   year: string;
   month: string;
   day: string;
+  unidadMedida: string;
 }
 
 @Component({
@@ -58,10 +59,11 @@ export class DetalleComponent implements OnInit {
     type: 'UTMs',
     year: '',
     month: '',
-    day: ''
+    day: '',
+    unidadMedida: ''
   }  
 
-  constructor(private indicadorService: IndicadorService) { }
+  constructor( private indicadorService: IndicadorService ) { }
 
   ngOnInit(): void {
 

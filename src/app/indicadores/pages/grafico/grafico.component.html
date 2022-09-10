@@ -1,16 +1,48 @@
 <mat-card class="example-card">
     <mat-card-header>
-      <mat-card-title>Detalle</mat-card-title>
+      <mat-card-title> {{ op.name | uppercase}} : {{ graficoTitulo }} ( Valor Actual ) </mat-card-title>
       <mat-card-subtitle>Graficos</mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
 
       <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
+        Datalle y Gráfico dsl indicador selecionado. Acontinuación tiene el detalle del indicador seleccionado
+        y un gráficos de linea, donde muetra la fecha y valor del indicador.
       </p>
+
+    
+
+    <div class="row" align="center">
+      <p >
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre del indicador</mat-label>
+          <input matInput placeholder="Nombre" [value]="nombre | uppercase">
+          <mat-icon matSuffix>price_change</mat-icon>
+          <mat-hint>Nombre del Indicador</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Última Fecha</mat-label>
+          <input matInput placeholder="Últama Fecha" [value]="fecha | date">
+          <mat-icon matSuffix>calendar_today</mat-icon>
+          <mat-hint>Fecha Fecha</mat-hint>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Unidad de Medida</mat-label>
+          <input matInput placeholder="Unidad de Medida" [value]="unidadMedida | uppercase">
+          <mat-icon matSuffix>price_check</mat-icon>
+          <mat-hint>Unidad de Medida</mat-hint>
+        </mat-form-field>
+      </p>      
+    </div>
+
+
+
+ 
 
       
     </mat-card-content>
@@ -22,7 +54,7 @@
   <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title>Graficos</mat-card-title>
-      <mat-card-subtitle>Ultimos 10 días</mat-card-subtitle>
+      <mat-card-subtitle> {{ graficoSubtitulo }} </mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>

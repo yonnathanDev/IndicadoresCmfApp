@@ -18,25 +18,28 @@ export class IndicadorService {
   getIndicadorDetalle( op: option ): Observable<Indicador>{
 
     let url = '';
-    console.log( op, 'aray-op');
+    // console.log( op, 'aray-op');
 
     if( op.category === 1 ){
       // ultimos 30 días (añadir un día más)
       // url = `${ this.apiUrl }/dolar/posteriores/2022/08/dias/10?apikey=${ this.ApiKey }&formato=json`;
       url = `${ this.apiUrl }/${ op.name }/posteriores/${ op.year }/${ op.month}/dias/${ op.day}?apikey=${ this.ApiKey }&formato=json`;
-      console.log(url, 'url Dolar')
+      // console.log(url, 'url Dolar')
     }else if( op.category === 2){
       // Año actual
       // https://api.cmfchile.cl/api-sbifv3/recursos_api/utm/posteriores/2021/09?
       url = `${ this.apiUrl }/${ op.name }/posteriores/${ op.year }/${ op.month }?apikey=${ this.ApiKey }&formato=json`; 
-      console.log(url, 'url UTM')
-    }else{
+      // console.log(url, 'url UTM')
+    }else if( op.category === 3){
       // 
       url = `${ this.apiUrl }/${ op.name }/${ op.year }?apikey=${ this.ApiKey }&formato=json`; 
-      console.log(url, 'url UTM')
+      // console.log(url, 'url UTM')
 
+    }else{
+      url = `${ this.apiUrl }/${ op.name }/posteriores/${ op.year }/${ op.month}/dias/${ op.day}?apikey=${ this.ApiKey }&formato=json`;
+      // https://api.cmfchile.cl/api-sbifv3/recursos_api/UF/posteriores/2010/01/dias/01?
+      // https://api.cmfchile.cl/api-sbifv3/recursos_api/uf/periodo/2009/2010?
     }
-
     
     return this.http.get<Indicador>( url );
 
@@ -50,8 +53,8 @@ export class IndicadorService {
           // delay(100),
           map(  resp =>  {
 
-            const  data = Object( resp )
-            console.log(data, 's-map')
+            const  data = Object( resp );
+            // console.log(data, 's-map')
 
             return {data};
           }),

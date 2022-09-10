@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { Chart, ChartConfiguration, ChartEvent, ChartData ,ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { Indicador, Dolare } from '../../interfaces/indicadores';
+import { Indicador, Dolare, Indicadores } from '../../interfaces/indicadores';
 
 import { IndicadorService } from '../../services/indicador.service';
 import { option } from '../detalle/detalle.component';
 
 import * as moment from 'moment/moment';
+import { last } from 'rxjs';
 
 
 @Component({
@@ -20,14 +21,21 @@ export class GraficoComponent implements OnInit {
   header: number[] = [];
   labels: string[] = [];
   indicador!: Indicador[];
+
+  graficoTitulo: number = 0;
+  graficoSubtitulo: string = '';
+  nombre: string = '';
+  fecha: string = '';
+  unidadMedida: string = '';
   
   op: option = {
-    name: 'ipc' ,
-    category: 3,
-    type: 'IPCs',
+    name: 'dolar' ,
+    category: 4,
+    type: 'Dolares',
     year: '',
     month: '',
-    day: ''
+    day: '',
+    unidadMedida: 'pesos'
   }  
 
    // Line
@@ -45,17 +53,39 @@ export class GraficoComponent implements OnInit {
   ngOnInit(): void {
 
     this.getDate(this.op.category);
-    console.log( this.op )
+    this.nombre = this.op.name;
+    this.unidadMedida = this.op.unidadMedida;
+    
+    this.graficoSubtitulo = ( this.op.category == 1 ? 'Últimos 10 días.' : 'Últimos 12 meses') 
+    console.log(this.graficoSubtitulo)
 
     this.indicadorService.getData( this.op )
         .subscribe( ({data}) => {
-          let objeto = data.IPCs;
-          
+
+          let objeto = data[ this.op.type ];
+          console.log(objeto)
+
           for( let i in  objeto){
+
             let header =  parseFloat(objeto[i].Valor);
             this.header.push( header );
             this.labels.push( objeto[i].Fecha );
+            
+            if( this.op.name == 'uf' ){
+              if( objeto[i].Fecha === '2022-09-10'){
+                console.log('valorFecha', header )
+                break;
+              }
+            }
+
           }
+
+          let date = this.labels.pop()
+          let price = this.header.pop()
+          this.graficoTitulo = price ? price : 0.0;  
+          this.fecha = date ? date : 'No se encontró la Fecha'; 
+
+          console.log( price, date )
 
           const colors = ['#6405F0','#0724E3', '#05A0F0','#0724E3', '#05A0F0'];
 
@@ -108,11 +138,6 @@ export class GraficoComponent implements OnInit {
 
 
 
-
-
-
-
-
   getDate( option: number ){
   
     moment.locale('es');
@@ -122,24 +147,32 @@ export class GraficoComponent implements OnInit {
     if(option === 1){
       // Devuelve el día, contado desde el día anterior.
       // res = today.subtract(30, 'days').format('YYYY-MM-DD');
-      let date = today.subtract(10, 'days');
+      let date = today.subtract(11, 'days');
       this.op.year = date.format('YYYY');
       this.op.month = date.format('MM');
       this.op.day = date.format('DD');
-
     }else if(option === 2){
       // Devuelve el año actual
       // date = today.subtract(12, 'months').format('YYYY-MM');
       this.op.year = today.format('YYYY')
-    }else {
+    }else if( option === 3) {
       // Los ultimos 12 meses
       let date = today.subtract(12, 'months');
       this.op.year = date.format('YYYY');
       this.op.month = date.format('MM');
-      console.log(date, 'date-month')
+      // console.log(date, 'date-month')
+    } else {
+      let date = today.subtract(10, 'days');
+      this.op.year = date.format('YYYY');
+      this.op.month = date.format('MM');
+      this.op.day = date.format('DD');
+      console.log( date.format('YYYY-MM-DD'), 'datev1' )
     }
 
   }  
+
+
+ 
   
 
 }
