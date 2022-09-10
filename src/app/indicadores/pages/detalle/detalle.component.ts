@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Dolar, Indicador, Indicadores } from '../../interfaces/indicadores';
+import { Dolar, Indicador, Indicadores, intIndicadores } from '../../interfaces/indicadores';
 import { IndicadorService } from '../../services/indicador.service';
 
 // import * as moment from 'moment/moment';
 import moment from 'moment/moment';
+import { ActivatedRoute } from '@angular/router';
+
+import dataIndicadores from '../../../../assets/data/indicadores.json';
+
 
 
 export interface PeriodicElement {
@@ -31,50 +35,53 @@ export class DetalleComponent implements OnInit {
   
   displayedColumns: string[] = ['Fecha', 'Valor'];  
   indicador!: Indicador[];
-  // indicadores: Indicadores[] = [
-  //   {
-  //     name: 'dolar',
-  //     categoria: 1
-  //   },
-  //   {
-  //     name: 'euro',
-  //     categoria: 1
-  //   },
-  //   {
-  //     name: 'uf',
-  //     categoria: 1
-  //   },
-  //   {
-  //     name: 'ipc',
-  //     categoria: 2
-  //   },
-  //   {
-  //     name: 'utm',
-  //     categoria: 2
-  //   }
-  // ];
 
+  indicadores: intIndicadores[] = dataIndicadores;
+
+  titulo: string = '';
+  subtitulo: string = '';
 
   op: option = {
-    name: 'dolar' ,
-    category: 1,
-    type: 'Dolares',
+    name: '' ,
+    category: 0,
+    type: '',
     year: '',
     month: '',
     day: '',
     unidadMedida: ''
   }  
 
-  constructor( private indicadorService: IndicadorService ) { }
+  constructor(  private indicadorService: IndicadorService,
+                private _router: ActivatedRoute  ) { }
 
   ngOnInit(): void {
 
-    let id: string = '';
-    let option: number = 1;
+    let _id = this._router.snapshot.paramMap.get('id');
+
+    console.log(_id, 'id');
+
+    let ind =  this.indicadores.find(x => x.name == _id);
+
+    if( !ind ){
+      console.log('no se encontró nada');
+      return;
+    }
+
+    console.log(ind, 'ind')
+    this.op.name = ind ? ind.name : '' ;
+    this.op.type = ind ? ind.type : '' ;
+    this.op.category = ind ? ind.category : 1 ;
+    this.op.unidadMedida = ind ? ind.measureUnit : ''
+
+    this.titulo = `${ this.op.name } `;
+    this.subtitulo = this.op.category == 1 ? 'Últimos 30 días' : 'Año actual' 
+
+
+    console.log(this.op, 'op')
+
 
     this.getDate(this.op.category);
-
-    console.log( this.op, 'op' )
+    // console.log( this.op, 'op' )
     
 
     this.indicadorService.getData( this.op )
@@ -89,12 +96,9 @@ export class DetalleComponent implements OnInit {
   }
   
 
-
-
-
   
   getDate( option: number ){
-  
+
     moment.locale('es');
     let today = moment();
     let res: moment.Moment; 
@@ -112,6 +116,8 @@ export class DetalleComponent implements OnInit {
       // date = today.subtract(12, 'months').format('YYYY-MM');
       this.op.year = today.format('YYYY')
     }
+
+    console.log(this.op, 'date')
 
   }  
 

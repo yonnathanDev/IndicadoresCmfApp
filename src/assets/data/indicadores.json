@@ -1,35 +1,35 @@
 [
     {
         "name": "dolar",
-        "category": "1",
+        "category": 1,
         "type": "Dolares",
         "measureUnit": "pesos",
         "icon": "dolar.png"
     },
     {
         "name": "euro",
-        "category": "1",
+        "category": 1,
         "type": "Euros",
         "measureUnit": "euro",
         "icon": "euro.png"
     },
     {
         "name": "uf",
-        "category": "1",
+        "category": 1,
         "type": "UFs",
         "measureUnit": "pesos",
         "icon": "uf.png"
     },
     {
         "name": "ipc",
-        "category": "2",
+        "category": 3,
         "type": "IPCs",
         "measureUnit": "pesos",
         "icon": "ipc.png"
     },
     {
         "name": "utm",
-        "category": "2",
+        "category": 3,
         "type": "UTMs",
         "measureUnit": "pesos",
         "icon": "utm.png"

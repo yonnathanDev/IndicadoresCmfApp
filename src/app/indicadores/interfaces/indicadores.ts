@@ -39,3 +39,11 @@ export interface Indicadores {
     name: string;
     categoria: number
 }
+
+export interface intIndicadores {
+    name: string;
+    category: number;
+    type: string;
+    measureUnit: string;
+    icon: string;
+}
