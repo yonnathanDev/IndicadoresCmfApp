@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Chart, ChartConfiguration, ChartEvent, ChartData ,ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { Indicador, Dolare, Indicadores } from '../../interfaces/indicadores';
+import { Indicador, Dolare, Indicadores, intIndicadores } from '../../interfaces/indicadores';
 
 import { IndicadorService } from '../../services/indicador.service';
 import { option } from '../detalle/detalle.component';
@@ -11,6 +11,10 @@ import { option } from '../detalle/detalle.component';
 import moment from 'moment/moment';
 
 import { last } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+
+import dataIndicadores from '../../../../assets/data/indicadores.json';
+
 
 
 @Component({
@@ -24,6 +28,9 @@ export class GraficoComponent implements OnInit {
   labels: string[] = [];
   indicador!: Indicador[];
 
+  indicadores: intIndicadores[] = dataIndicadores;
+
+
   graficoTitulo: number = 0;
   graficoSubtitulo: string = '';
   nombre: string = '';
@@ -31,13 +38,13 @@ export class GraficoComponent implements OnInit {
   unidadMedida: string = '';
   
   op: option = {
-    name: 'dolar' ,
-    category: 4,
-    type: 'Dolares',
+    name: '' ,
+    category: 0,
+    type: '',
     year: '',
     month: '',
     day: '',
-    unidadMedida: 'pesos'
+    unidadMedida: ''
   }  
 
    // Line
@@ -50,9 +57,34 @@ export class GraficoComponent implements OnInit {
 
   public lineChartType: ChartType = 'line';    
   
-  constructor( private indicadorService: IndicadorService ) { }
+  constructor(  private indicadorService: IndicadorService, 
+                private _router: ActivatedRoute) { }
 
   ngOnInit(): void {
+   
+    let _id = this._router.snapshot.paramMap.get('id');
+
+    console.log(_id, 'id');
+
+    let ind =  this.indicadores.find(x => x.name == _id);
+
+    if( !ind ){
+      console.log('no se encontró nada');
+      return;
+    }
+
+    console.log(ind, 'ind')
+    this.op.name = ind ? ind.name : '' ;
+    this.op.type = ind ? ind.type : '' ;
+    this.op.category = ind ? ind.category : 1 ;
+    this.op.unidadMedida = ind ? ind.measureUnit : '';
+
+    console.log(this.op, 'op')
+
+
+    // this.titulo = `${ this.op.name } `;
+    // this.subtitulo = this.op.category == 1 ? 'Últimos 30 días' : 'Año actual' 
+
 
     this.getDate(this.op.category);
     this.nombre = this.op.name;

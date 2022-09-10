@@ -21,7 +21,7 @@ const routes: Routes = [
         component: DetalleComponent
       },
       {
-        path: 'grafico',
+        path: 'grafico/:id',
         component: GraficoComponent
       },
       {
