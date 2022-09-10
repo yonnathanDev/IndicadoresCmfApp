@@ -39,7 +39,7 @@ export class IndicadorService {
   }
 
   getData( op: option ){
-    // let id = ''; 
+    
     return this.getIndicadorDetalle( op )
         .pipe(
           // delay(100),
@@ -47,8 +47,6 @@ export class IndicadorService {
 
             const  data = Object( resp )
             console.log(data, 's-map')
-
-
 
             return {data};
           }),
