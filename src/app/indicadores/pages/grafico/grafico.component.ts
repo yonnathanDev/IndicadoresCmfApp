@@ -7,7 +7,9 @@ import { Indicador, Dolare, Indicadores } from '../../interfaces/indicadores';
 import { IndicadorService } from '../../services/indicador.service';
 import { option } from '../detalle/detalle.component';
 
-import * as moment from 'moment/moment';
+// import * as moment from 'moment/moment';
+import moment from 'moment/moment';
+
 import { last } from 'rxjs';
 
 

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
-import * as moment from 'moment/moment';
+import moment from 'moment/moment';
+
 import { last } from 'rxjs';
 import { Dolar } from '../../interfaces/indicadores';
 import { IndicadorService } from '../../services/indicador.service';
+
+import dataIndicadores from '../../../../assets/data/indicadores.json';
 
 export interface PeriodicElement {
   name: string;

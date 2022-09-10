@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Dolar, Indicador, Indicadores } from '../../interfaces/indicadores';
 import { IndicadorService } from '../../services/indicador.service';
 
-import * as moment from 'moment/moment';
+// import * as moment from 'moment/moment';
+import moment from 'moment/moment';
+
 
 export interface PeriodicElement {
   name: string;
@@ -54,9 +56,9 @@ export class DetalleComponent implements OnInit {
 
 
   op: option = {
-    name: 'utm' ,
-    category: 2,
-    type: 'UTMs',
+    name: 'dolar' ,
+    category: 1,
+    type: 'Dolares',
     year: '',
     month: '',
     day: '',
@@ -77,47 +79,8 @@ export class DetalleComponent implements OnInit {
 
     this.indicadorService.getData( this.op )
         .subscribe( ({data}) => {
-          // this.indicador = data.IPCs;
-          // this.getType( data );
-
-          switch( this.op.name ) {
-      
-            case 'dolar': {
-              this.indicador = data.Dolares;
-              console.log('dolar')
-              break;
-            }
-
-            case 'euros': {
-              this.indicador = data.Euros;
-              console.log('uf')
-              break;
-            }   
-            
-            case 'uf': {
-              this.indicador = data.UFs;
-              console.log('uf')
-              break;
-            }            
-
-            case 'ipc': {
-              this.indicador = data.IPCs;
-              console.log('ipc')
-              break;
-            }            
-      
-            case 'utm': {
-              this.indicador = data.UTMs;
-              console.log('utm')
-              break;
-            }
-      
-            default: {
-              console.log('end')
-              break;
-            }
-      
-          }          
+          
+          this.indicador = data[ this.op.type ];
 
           console.log( data , 'c-map' )  
 
