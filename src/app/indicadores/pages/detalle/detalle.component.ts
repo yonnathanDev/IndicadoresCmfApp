@@ -40,7 +40,9 @@ export class DetalleComponent implements OnInit {
 
   titulo: string = '';
   subtitulo: string = '';
+  
   breadcrumb: string = 'Historial Indicadores';
+  loading: boolean = true;
 
   op: option = {
     name: '' ,
@@ -91,7 +93,7 @@ export class DetalleComponent implements OnInit {
           this.indicador = data[ this.op.type ];
 
           console.log( data , 'c-map' )  
-
+          this.loading = false;
         })
 
   }

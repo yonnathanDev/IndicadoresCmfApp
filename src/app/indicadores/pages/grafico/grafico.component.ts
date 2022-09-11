@@ -38,6 +38,8 @@ export class GraficoComponent implements OnInit {
   unidadMedida: string = '';
 
   breadcrumb: string = 'Gráfico Indicadores';
+  loading: boolean = true;
+
 
 
   today: string = '';
@@ -131,6 +133,7 @@ export class GraficoComponent implements OnInit {
 
           this.getGrafico();
           
+          this.loading = false;
 
         })    
 

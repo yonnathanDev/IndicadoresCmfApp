@@ -9,15 +9,18 @@
 
     <mat-card-content>
 
-
+      <mat-progress-bar mode="query" *ngIf="loading"></mat-progress-bar>
+      
       <table mat-table [dataSource]="indicador" class="mat-elevation-z8">
+        
+        
         <!-- Item Column -->
         <ng-container matColumnDef="Fecha">
           <th mat-header-cell *matHeaderCellDef> Fechas </th>
           <td mat-cell *matCellDef="let element"> {{ element.Fecha | date }} </td>
           <td mat-footer-cell *matFooterCellDef> Fechas </td>
         </ng-container>
-      
+        
         <!-- Cost Column -->
         <ng-container matColumnDef="Valor">
           <th mat-header-cell *matHeaderCellDef> Valor </th>

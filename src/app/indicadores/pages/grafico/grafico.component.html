@@ -1,6 +1,8 @@
 
 <app-breadcrumb [breadcrumb]="breadcrumb"></app-breadcrumb>
 
+<mat-progress-bar mode="query" *ngIf="loading"></mat-progress-bar>
+
 <mat-card class="example-card">
     <mat-card-header>
       <mat-card-title> {{ op.name | uppercase}} : {{ graficoTitulo }} ( Valor Actual ) </mat-card-title>

@@ -38,7 +38,7 @@ export class IndicadorService {
     
     return this.getIndicadorDetalle( op )
         .pipe(
-          // delay(1500),
+          delay(1500),
           map(  resp =>  {
 
             const  data = Object( resp );
