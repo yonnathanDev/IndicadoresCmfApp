@@ -36,6 +36,8 @@ export class GraficoComponent implements OnInit {
   nombre: string = '';
   fecha: string = '';
   unidadMedida: string = '';
+
+  today: string = '';
   
   op: option = {
     name: '' ,
@@ -73,13 +75,10 @@ export class GraficoComponent implements OnInit {
       return;
     }
 
-    // console.log(ind, 'ind')
     this.op.name = ind ? ind.name : '' ;
     this.op.type = ind ? ind.type : '' ;
     this.op.category = ind ? ind.category : 1 ;
     this.op.unidadMedida = ind ? ind.measureUnit : '';
-
-    // console.log(this.op, 'op')
 
 
     // this.titulo = `${ this.op.name } `;
@@ -97,50 +96,58 @@ export class GraficoComponent implements OnInit {
         .subscribe( ({data}) => {
 
           let objeto = data[ this.op.type ];
-          console.log(objeto)
+          console.log(objeto, 'objeto')
 
-          for( let i in  objeto){
-
-            let header =  parseFloat(objeto[i].Valor);
-            this.header.push( header );
-            this.labels.push( objeto[i].Fecha );
+          // Recorre el objeto y le hace un push this.header y this.labels
+          for( let i  in  objeto){
             
-            if( this.op.name == 'uf' ){
-              if( objeto[i].Fecha === '2022-09-10'){
-                // console.log('valorFecha', header )
+            // braak
+            if( this.op.name === 'uf' ){
+
+              if( moment( objeto[i].Fecha ).isAfter( this.today , 'day') ){
+                // console.log('momet');
                 break;
-              }
+              }    
+              
             }
+            
+            let header =   parseFloat(objeto[i].Valor);
+            let label  =   objeto[i].Fecha;
+
+            this.labels.push( label );
+            this.header.push( header );
 
           }
+
 
           let date = this.labels.pop()
           let price = this.header.pop()
           this.graficoTitulo = price ? price : 0.0;  
           this.fecha = date ? date : 'No se encontró la Fecha'; 
+          console.log( price, date )
 
-          // console.log( price, date )
-
-          const colors = ['#6405F0','#0724E3', '#05A0F0','#0724E3', '#05A0F0'];
-
-          this.lineChartData = {
-            labels: this.labels.reverse(),
-            datasets: [{
-              data: this.header.reverse(), 
-              label: this.op.name,
-              pointBackgroundColor: 'rgba(148,159,177,1)',
-              pointHoverBackgroundColor: '#fff',
-              pointHoverBorderColor: 'rgba(148,159,177,0.8)',
-              fill: 'origin',
-            }]
-          }
+          this.getGrafico();
           
-          console.log(  objeto , 'c-map' )  
 
         })    
 
   }
 
+  getGrafico(){
+    
+    this.lineChartData = {
+      labels: this.labels.reverse(),
+      datasets: [{
+        data: this.header.reverse(), 
+        label: this.op.name,
+        pointBackgroundColor: 'rgba(148,159,177,1)',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+        fill: 'origin',
+      }]
+    }    
+
+  }
 
 
   public lineChartOptions: ChartConfiguration['options'] = {
@@ -176,21 +183,27 @@ export class GraficoComponent implements OnInit {
   
     moment.locale('es');
     let today = moment();
-    let res: moment.Moment; 
-
+ 
+    this.today = today.add( 1 , 'days').format('YYYY-MM-DD');
+    console.log(this.today, 'today')
+    
     if(option === 1){
       // Devuelve el día, contado desde el día anterior.
-      // res = today.subtract(30, 'days').format('YYYY-MM-DD');
       let date = today.subtract(11, 'days');
+
+      console.log(date.format('YYYY-MM-DD'), '10 días antes')
+      
       this.op.year = date.format('YYYY');
       this.op.month = date.format('MM');
       this.op.day = date.format('DD');
     }else{
       // Los ultimos 12 meses, agregar un mes más
-      let date = today.subtract(13, 'months');
+      let date = today.subtract(12, 'months');
+
+      console.log(date.format('YYYY-MM-DD'), '12 Meses antes')
+
       this.op.year = date.format('YYYY');
       this.op.month = date.format('MM');
-      // console.log(date, 'date-month')
     }
 
   }  

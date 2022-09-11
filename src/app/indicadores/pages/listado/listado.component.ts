@@ -21,7 +21,7 @@ export interface PeriodicElement {
     `
       table {
         width: 100%;
-      }
+      }   
     `
   ]
 })

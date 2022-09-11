@@ -38,7 +38,7 @@ export class IndicadorService {
     
     return this.getIndicadorDetalle( op )
         .pipe(
-          // delay(100),
+          // delay(1500),
           map(  resp =>  {
 
             const  data = Object( resp );
@@ -57,22 +57,24 @@ export class IndicadorService {
 
     if( option.category === 1){
       // Ultimos 10 días para UF, Dolar, Euro / parte desde el día posterior del indicado
+      console.log('10-dias')
       url = `${ this.apiUrl }/${ option.name }/posteriores/${ option.year }/${ option.month}/dias/${ option.day}?apikey=${ this.ApiKey }&formato=json`;
 
     }else{
       // Ultimos 12 meses para UT; he IPC / parte desde el mes posterior del indicado
+      console.log('12-meses')
       url = `${ this.apiUrl }/${ option.name }/posteriores/${ option.year }/${ option.month }?apikey=${ this.ApiKey }&formato=json`; 
     }    
 
     return this.http.get<Indicador>( url );
   }
 
-  // Manipula los datos pata el gráfico
+  // Manipula los datos el gráfico
   getDataGrafico( option: option ){
     
     return this.getIndicadoresGrafico( option )
         .pipe(
-          // delay(100),
+          // delay(1500),
           map(  resp =>  {
 
             const  data = Object( resp );
