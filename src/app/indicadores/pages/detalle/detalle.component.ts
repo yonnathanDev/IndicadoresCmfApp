@@ -40,6 +40,7 @@ export class DetalleComponent implements OnInit {
 
   titulo: string = '';
   subtitulo: string = '';
+  breadcrumb: string = 'Historial Indicadores';
 
   op: option = {
     name: '' ,

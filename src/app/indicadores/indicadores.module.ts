@@ -11,6 +11,7 @@ import { ListadoComponent } from './pages/listado/listado.component';
 import { DetalleComponent } from './pages/detalle/detalle.component';
 import { GraficoComponent } from './pages/grafico/grafico.component';
 import { HomeComponent } from './pages/home/home.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HomeComponent } from './pages/home/home.component';
     ListadoComponent,
     DetalleComponent,
     GraficoComponent,
-    HomeComponent
+    HomeComponent,
+    BreadcrumbComponent
   ],
   imports: [
     CommonModule,

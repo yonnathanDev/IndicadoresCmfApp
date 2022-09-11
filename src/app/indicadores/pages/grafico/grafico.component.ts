@@ -37,6 +37,9 @@ export class GraficoComponent implements OnInit {
   fecha: string = '';
   unidadMedida: string = '';
 
+  breadcrumb: string = 'Gráfico Indicadores';
+
+
   today: string = '';
   
   op: option = {
