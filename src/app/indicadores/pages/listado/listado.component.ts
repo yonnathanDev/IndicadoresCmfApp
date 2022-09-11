@@ -27,6 +27,8 @@ export interface PeriodicElement {
 })
 export class ListadoComponent implements OnInit {
   
+  style: string = 'background-color: #0a4275; margin-top: 50px; position: fixed; bottom: 0;width: 100%;';
+
   indicadores: intIndicadores[] = dataIndicadores;
 
   displayedColumns: string[] = ['name', 'position'];

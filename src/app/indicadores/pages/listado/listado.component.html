@@ -20,26 +20,27 @@
                       tooltip="matTooltip"
                       matTooltip="Ver Gráfico"
                       matTooltipPosition="left"
-                      mat-list-item style="text-decoration:none; color: black">
+                      mat-list-item 
+                      style="text-decoration:none; color: black">
 
                       <div class="container">
-                        <div class="row">
+                        <!-- <div class="row"> -->
 
                           <div class="col-12 text-left">
                             <h6 > 
                               {{element.name | uppercase}} 
                             </h6>
                           </div>                                                    
-                          <div class="col-2 text-left">
+                          <div class="col-12 text-left" style="color: blue">
                             <span>
                               {{ element.measureUnit }}
                             </span>
                           </div>
-                          <div class="col-2 text-left">
+                          <!-- <div class="col-2 text-left">
                             <mat-icon>query_stats</mat-icon>
-                          </div>
+                          </div> -->
                         
-                        </div>
+                        <!-- </div> -->
                       </div>
 
               </a>
@@ -83,7 +84,6 @@
 
 
   </mat-card>
-
 
 
  

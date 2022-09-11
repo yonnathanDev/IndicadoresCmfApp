@@ -32,6 +32,7 @@ export interface option {
 })
 export class DetalleComponent implements OnInit {
 
+  style: string = 'background-color: #0a4275; margin-top: 50px;';
   
   displayedColumns: string[] = ['Fecha', 'Valor'];  
   indicador!: Indicador[];
