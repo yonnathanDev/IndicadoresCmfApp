@@ -1,7 +1,7 @@
 <h1 align="center">Angular - The modern web developer's platform.</h1>
 
 <p align="center">
-  <img src="financieros/src/assets/icon-logos/angular-logo.png" alt="angular-logo" width="120px" height="120px"/>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg" alt="angular-logo" width="120px" height="120px"/>
   <br>
   <i>Angular is a development platform for building mobile and desktop web applications
     <br> using Typescript/JavaScript and other languages.</i>
@@ -40,3 +40,88 @@
     <img src="https://dl.circleci.com/insights-snapshot/gh/angular/angular/main/default_workflow/badge.svg" alt="InsightsSnapshot" />
   </a>
 </p>
+
+## Description
+
+[Angular](https://angular.io) Angular es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página.
+
+## Development Setup
+
+### Requisitos
+
+- Install [Node.js] which includes [Node Package Manager][npm]
+
+### Configuración del proyecto
+
+Install the Angular CLI globally:
+
+```
+npm install -g @angular/cli
+```
+
+Crear un espacio de trabajo:
+
+```
+ng new [PROJECT NAME]
+```
+
+Para correr la aplicación:
+
+```
+cd [PROJECT NAME]
+ng serve
+```
+
+Angular es multiplataforma, rápido, escalable, tiene herramientas increíbles y es amado por millones.
+
+
+### Configuración de las librerias
+
+Librería utilizadas en la aplicación
+
+
+* [Angular Material](https://material.angular.io)
+* [Bootstrap](https://getbootstrap.com)
+* [Chart.js](https://www.chartjs.org)
+* [Ng2-Charts](https://www.npmjs.com/package/ng2-charts)
+* [Momentjs](https://momentjs.com)
+* [Animate.css](https://animate.style)
+
+
+Angular Material - Install :
+
+```
+ng add @angular/material
+```
+
+Bootstrap - Install :
+
+```
+<!-- CSS only -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+```
+
+Chart.js - Install :
+
+```
+npm install chart.js
+```
+
+Ng2-Charts - Install :
+
+```
+npm install ng2-charts --save
+```
+
+Momentjs - Install :
+
+```
+npm install moment --save
+```
+
+Animate.css - Install :
+
+```
+npm install animate.css --save
+```
