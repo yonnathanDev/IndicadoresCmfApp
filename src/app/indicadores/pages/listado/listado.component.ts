@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import moment from 'moment/moment';
-
-import { last } from 'rxjs';
 import { intIndicadores } from '../../interfaces/indicadores';
-import { IndicadorService } from '../../services/indicador.service';
 
 import dataIndicadores from '../../../../assets/data/indicadores.json';
 
