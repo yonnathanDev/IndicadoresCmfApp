@@ -1,21 +1,3 @@
-export interface Dolar {
-    Dolares: Dolare[];
-}
-
-export interface Dolare {
-    Valor: string;
-    Fecha: Date;
-}
-
-
-export interface Uf {
-    UFs: UFElement[];
-}
-
-export interface UFElement {
-    Valor: string;
-    Fecha: Date;
-}
 
 export interface Indicador {
     Indicador: IndicadorDetalle[];
@@ -26,14 +8,6 @@ export interface IndicadorDetalle {
     Fecha: Date;
 }
 
-export interface IPC {
-    IPCs: IPCElement[];
-}
-
-export interface IPCElement {
-    Valor: string;
-    Fecha: Date;
-}
 
 export interface Indicadores {
     name: string;
@@ -47,3 +21,13 @@ export interface intIndicadores {
     measureUnit: string;
     icon: string;
 }
+
+export interface option {
+    name: string;
+    category: number;
+    type: string;
+    year: string;
+    month: string;
+    day: string;
+    unidadMedida: string;
+  }

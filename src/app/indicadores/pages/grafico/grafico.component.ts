@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { Chart, ChartConfiguration, ChartEvent, ChartData ,ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { Indicador, Dolare, Indicadores, intIndicadores } from '../../interfaces/indicadores';
+import { intIndicadores, option } from '../../interfaces/indicadores';
 
 import { IndicadorService } from '../../services/indicador.service';
-import { option } from '../detalle/detalle.component';
 
 // import * as moment from 'moment/moment';
 import moment from 'moment/moment';

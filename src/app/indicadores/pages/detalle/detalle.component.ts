@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Dolar, Indicador, Indicadores, intIndicadores } from '../../interfaces/indicadores';
+import { Indicador, intIndicadores, option } from '../../interfaces/indicadores';
 import { IndicadorService } from '../../services/indicador.service';
 
 // import * as moment from 'moment/moment';
@@ -8,22 +8,15 @@ import { ActivatedRoute } from '@angular/router';
 
 import dataIndicadores from '../../../../assets/data/indicadores.json';
 
-
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-}
-
-export interface option {
-  name: string;
-  category: number;
-  type: string;
-  year: string;
-  month: string;
-  day: string;
-  unidadMedida: string;
-}
+// export interface option {
+//   name: string;
+//   category: number;
+//   type: string;
+//   year: string;
+//   month: string;
+//   day: string;
+//   unidadMedida: string;
+// }
 
 @Component({
   selector: 'app-detalle',
@@ -62,8 +55,6 @@ export class DetalleComponent implements OnInit {
 
     let _id = this._router.snapshot.paramMap.get('id');
 
-    console.log(_id, 'id');
-
     let indicador =  this.indicadores.find(x => x.name == _id);
 
     if( !indicador ){
@@ -80,12 +71,7 @@ export class DetalleComponent implements OnInit {
     this.titulo = `${ this.op.name } `;
     this.subtitulo = this.op.category == 1 ? 'Últimos 30 días' : 'Año actual' 
 
-
-    console.log(this.op, 'op')
-
-
     this.getDate(this.op.category);
-    // console.log( this.op, 'op' )
     
 
     this.indicadorService.getDataDetalle( this.op )
@@ -119,8 +105,6 @@ export class DetalleComponent implements OnInit {
       // date = today.subtract(12, 'months').format('YYYY-MM');
       this.op.year = today.format('YYYY')
     }
-
-    console.log(this.op, 'date')
 
   }  
 

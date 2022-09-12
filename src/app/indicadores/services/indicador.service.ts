@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, pipe, tap, delay, catchError, of } from 'rxjs';
 
-import { Indicador } from '../interfaces/indicadores';
-import { option } from '../pages/detalle/detalle.component';
+import { Indicador, option } from '../interfaces/indicadores';
 
 @Injectable({
   providedIn: 'root'
