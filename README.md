@@ -41,11 +41,11 @@
   </a>
 </p>
 
-## Description
+## Configuración
 
 [Angular](https://angular.io) Angular es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página.
 
-## Development Setup
+## Configuración de Desarrollo
 
 ### Requisitos
 
@@ -53,7 +53,7 @@
 
 ### Configuración del proyecto
 
-Install the Angular CLI globally:
+Instalar Angular CLI globalmente:
 
 ```
 npm install -g @angular/cli
