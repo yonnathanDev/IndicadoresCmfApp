@@ -69,7 +69,9 @@ Cada indicador mostra su información según su categoría. En la App encontrare
 
 [API CMF BANCOS](https://api.cmfchile.cl/que-es-api.html): La API CMF Bancos permite el acceso a diversos recursos de información con datos actuales e históricos de diferentes tipos de reportes que se ofrecen en el sitio web.
 
-La API CMF Bancos permite el acceso a diversos recursos de información con datos actuales e históricos de diferentes tipos de reportes que se ofrecen en el sitio web. Aunque al inicio habrá sólo un grupo de reportes, se irán agregando nuevos recursos, los que se irán informando a través de este sitio web
+La API CMF Bancos permite el acceso a diversos recursos de información con datos actuales e históricos de diferentes tipos de reportes que se ofrecen en el sitio web. Aunque al inicio habrá sólo un grupo de reportes, se irán agregando nuevos recursos, los que se irán informando a través de este sitio web.
+
+La API CMF Bancos es un servicio gratuito; consulte los [términos de uso](https://api.cmfchile.cl/terminos-de-uso.html) para obtener más información al respecto.
 
 ## Configuración
 
