@@ -26,6 +26,7 @@ export class GraficoComponent implements OnInit {
 
   fechaData: string[] = []; // Fechas del Gráfico
   valorData: number[] = []; // Valores del Gráfico
+  tituloData: string = ''; //Nombre del Gráfico
   
   indicadores: intIndicadores[] = dataIndicadores; // Contiene los indicadores de indicadores.json
 
@@ -103,6 +104,9 @@ export class GraficoComponent implements OnInit {
           this.tituloGrafico = ( this.option.category == 1 ? 'Últimos 10 días.' : 'Últimos 12 meses');
           this.tituloDetalle = valor ? valor : 0.0;  
 
+          // Título del Gráfico
+          this.tituloData = this.option.name;
+
           // Valores de los input del detalle
           this.unidadMedidaInput = this.option.unidadMedida;
           this.nombreInput = this.option.name;
@@ -147,14 +151,14 @@ export class GraficoComponent implements OnInit {
 
   }  
   
-  // Carga el gráfico de información
+  // Carga información en el Gráfico
   getGrafico(){
     
     this.lineChartData = {
       labels: this.fechaData.reverse(),
       datasets: [{
         data: this.valorData.reverse(), 
-        label: this.option.name,
+        label: this.tituloData,
         pointBackgroundColor: 'rgba(148,159,177,1)',
         pointHoverBackgroundColor: '#fff',
         pointHoverBorderColor: 'rgba(148,159,177,0.8)',
@@ -171,7 +175,6 @@ export class GraficoComponent implements OnInit {
     labels: this.lineChartLabels,
     datasets: []
   };
-
   public lineChartOptions: ChartConfiguration['options'] = {
     
     elements: {

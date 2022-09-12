@@ -13,6 +13,7 @@ import { GraficoComponent } from './pages/grafico/grafico.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { FooterComponent } from './components/footer/footer.component';
     GraficoComponent,
     HomeComponent,
     BreadcrumbComponent,
-    FooterComponent
+    FooterComponent,
+    ChartComponent
   ],
   imports: [
     CommonModule,
