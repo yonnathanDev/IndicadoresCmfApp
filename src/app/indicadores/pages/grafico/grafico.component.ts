@@ -89,8 +89,8 @@ export class GraficoComponent implements OnInit {
             fecha = fechaData;
             valor = valorData;
             
-            if( moment( valorData ).isAfter( this.today , 'day') ){
-              console.log( valorData ,'Es mayor');
+            if( moment( fechaData ).isAfter( this.today , 'day') ){
+              console.log( fechaData ,'Es mayor');
               break;
             }             
 

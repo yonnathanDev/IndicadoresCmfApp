@@ -2,21 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Indicador, intIndicadores, option } from '../../interfaces/indicadores';
 import { IndicadorService } from '../../services/indicador.service';
 
-// import * as moment from 'moment/moment';
 import moment from 'moment/moment';
 import { ActivatedRoute } from '@angular/router';
 
 import dataIndicadores from '../../../../assets/data/indicadores.json';
-
-// export interface option {
-//   name: string;
-//   category: number;
-//   type: string;
-//   year: string;
-//   month: string;
-//   day: string;
-//   unidadMedida: string;
-// }
 
 @Component({
   selector: 'app-detalle',
