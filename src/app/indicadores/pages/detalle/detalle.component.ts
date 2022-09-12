@@ -3,7 +3,7 @@ import { Indicador, intIndicadores, option } from '../../interfaces/indicadores'
 import { IndicadorService } from '../../services/indicador.service';
 
 import moment from 'moment/moment';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import dataIndicadores from '../../../../assets/data/indicadores.json';
 
@@ -38,6 +38,7 @@ export class DetalleComponent implements OnInit {
   }  
 
   constructor(  private indicadorService: IndicadorService,
+                private router: Router,
                 private _router: ActivatedRoute  ) { }
 
   ngOnInit(): void {
@@ -48,6 +49,7 @@ export class DetalleComponent implements OnInit {
 
     if( !indicador ){
       console.log('no se encontró nada');
+      this.router.navigate(['/']);
       return;
     }
 
