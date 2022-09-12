@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, pipe, tap, delay, catchError, of } from 'rxjs';
 
-import { Dolar, Indicador, Uf } from '../interfaces/indicadores';
+import { Indicador } from '../interfaces/indicadores';
 import { option } from '../pages/detalle/detalle.component';
 
 @Injectable({
@@ -52,7 +52,7 @@ export class IndicadorService {
 
   // Obtiene los datos para el grafico
   getIndicadoresGrafico( option: option  ): Observable<Indicador>{
-    console.log('url-grafico')
+    // console.log('url-grafico')
     let url = '';
 
     if( option.category === 1){

@@ -64,18 +64,18 @@ export class DetalleComponent implements OnInit {
 
     console.log(_id, 'id');
 
-    let ind =  this.indicadores.find(x => x.name == _id);
+    let indicador =  this.indicadores.find(x => x.name == _id);
 
-    if( !ind ){
+    if( !indicador ){
       console.log('no se encontró nada');
       return;
     }
 
-    console.log(ind, 'ind')
-    this.op.name = ind ? ind.name : '' ;
-    this.op.type = ind ? ind.type : '' ;
-    this.op.category = ind ? ind.category : 1 ;
-    this.op.unidadMedida = ind ? ind.measureUnit : ''
+    console.log(indicador, 'ind')
+    this.op.name = indicador ? indicador.name : '' ;
+    this.op.type = indicador ? indicador.type : '' ;
+    this.op.category = indicador ? indicador.category : 1 ;
+    this.op.unidadMedida = indicador ? indicador.measureUnit : ''
 
     this.titulo = `${ this.op.name } `;
     this.subtitulo = this.op.category == 1 ? 'Últimos 30 días' : 'Año actual' 
@@ -105,7 +105,6 @@ export class DetalleComponent implements OnInit {
 
     moment.locale('es');
     let today = moment();
-    let res: moment.Moment; 
 
     if(option == 1){
       // Devuelve el día, contado desde el día anterior.

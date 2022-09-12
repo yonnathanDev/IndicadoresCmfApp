@@ -5,50 +5,43 @@
 
 <mat-card class="example-card animate__animated animate__fadeIn animate__delay-0.5s">
     <mat-card-header>
-      <mat-card-title> {{ op.name | uppercase}} : {{ graficoTitulo }} ( Valor Actual ) </mat-card-title>
+      <mat-card-title> {{ option.name | uppercase}} : {{ tituloDetalle }} ( Valor Actual ) </mat-card-title>
       <mat-card-subtitle>Graficos</mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
 
       <p>
-        Datalle y Gráfico dsl indicador selecionado. Acontinuación tiene el detalle del indicador seleccionado
+        Detalle y Gráfico del Indicador selecionado. A continuación se muetra el detalle del indicador seleccionado
         y un gráficos de linea, donde muetra la fecha y valor del indicador.
       </p>
 
-    
-
-    <div class="row" align="center">
-      <p >
-        <mat-form-field appearance="outline">
-          <mat-label>Nombre del indicador</mat-label>
-          <input matInput placeholder="Nombre" [value]="nombre | uppercase">
-          <mat-icon matSuffix>price_change</mat-icon>
-          <mat-hint>Nombre del Indicador</mat-hint>
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Última Fecha</mat-label>
-          <input matInput placeholder="Últama Fecha" [value]="fecha | date" class="animate__animated animate__fadeIn">
-          <mat-icon matSuffix>calendar_today</mat-icon>
-          <mat-hint>Fecha Fecha</mat-hint>
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field appearance="outline">
-          <mat-label>Unidad de Medida</mat-label>
-          <input matInput placeholder="Unidad de Medida" [value]="unidadMedida | uppercase">
-          <mat-icon matSuffix>price_check</mat-icon>
-          <mat-hint>Unidad de Medida</mat-hint>
-        </mat-form-field>
-      </p>      
-    </div>
-
-
-
- 
-
+      <div class="row" align="center">
+        <p >
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre del indicador</mat-label>
+            <input matInput placeholder="Nombre" [value]="nombreInput | uppercase">
+            <mat-icon matSuffix>price_change</mat-icon>
+            <mat-hint>Nombre del Indicador</mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Última Fecha</mat-label>
+            <input matInput placeholder="Últama Fecha" [value]="fechaInput | date" class="animate__animated animate__fadeIn">
+            <mat-icon matSuffix>calendar_today</mat-icon>
+            <mat-hint>Última Fecha</mat-hint>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label>Unidad de Medida</mat-label>
+            <input matInput placeholder="Unidad de Medida" [value]="unidadMedidaInput | uppercase">
+            <mat-icon matSuffix>price_check</mat-icon>
+            <mat-hint>Unidad de Medida</mat-hint>
+          </mat-form-field>
+        </p>      
+      </div>
       
     </mat-card-content>
 
@@ -59,7 +52,7 @@
   <mat-card class="example-card animate__animated animate__fadeIn animate__delay-0.5s">
     <mat-card-header>
       <mat-card-title>Graficos</mat-card-title>
-      <mat-card-subtitle> {{ graficoSubtitulo }} </mat-card-subtitle>
+      <mat-card-subtitle> {{ tituloGrafico }} </mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
