@@ -65,6 +65,12 @@ Cada indicador mostra su información según su categoría. En la App encontrare
         * Categoría 1: Mostrará los datos de los últimos 10 días.
         * Categoría 2: Mostrará los datos de los últimos 12 meses.
 
+## API CMF Bancos
+
+[API CMF BANCOS](https://api.cmfchile.cl/que-es-api.html): La API CMF Bancos permite el acceso a diversos recursos de información con datos actuales e históricos de diferentes tipos de reportes que se ofrecen en el sitio web.
+
+La API CMF Bancos permite el acceso a diversos recursos de información con datos actuales e históricos de diferentes tipos de reportes que se ofrecen en el sitio web. Aunque al inicio habrá sólo un grupo de reportes, se irán agregando nuevos recursos, los que se irán informando a través de este sitio web
+
 ## Configuración
 
 [Angular](https://angular.io) Angular es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página.

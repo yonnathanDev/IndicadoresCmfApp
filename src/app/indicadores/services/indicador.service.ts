@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, pipe, tap, delay, catchError, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 import { Indicador, option } from '../interfaces/indicadores';
 
@@ -9,8 +10,8 @@ import { Indicador, option } from '../interfaces/indicadores';
 })
 export class IndicadorService {
 
-  private apiUrl: string = 'https://api.cmfchile.cl/api-sbifv3/recursos_api';
-  private ApiKey: string = '06fb4e5903bd1cbf9b1f3d63d3553c50efb31ac1';
+  private apiUrl: string = environment.apiUrl;
+  private ApiKey: string = environment.apiKey;
   
   constructor( private http: HttpClient ) { }
 
