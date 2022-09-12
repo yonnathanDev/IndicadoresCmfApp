@@ -41,6 +41,30 @@
   </a>
 </p>
 
+## Descripción
+
+Indicadores CMF App, es una aplicación que te permitirá ver distintos indicadores financieros, donde tendrás una interfaz muy amigable.
+Los indicadores que se mostrán en la App, estarás divididas en 2 categorías. Las categorías son:
+* Catergoría 1:
+    * Dólar
+    * Euro
+    * UF
+* Categoría 2: 
+    * IPC
+    * UTM
+    
+Cada indicador mostra su información según su categoría. En la App encontraremos 3 tipos de pantalla, las cuales son:  
+    
+    * Pantalla de Inicio: Mostrará una lista de indicadores.
+    
+    * Patalla del Historial: Mostra un historial del indicador seleccionado según su categoría.
+        * Categoría 1: Mostrará los datos de los últimos 30 días.
+        * Categoría 2: Mostrará los datos del año actual.
+    
+    * Pantalla del Gráfico: Mostrará un detalle del indicador seleccionado y un gráfico según su categoría.
+        * Categoría 1: Mostrará los datos de los últimos 10 días.
+        * Categoría 2: Mostrará los datos de los últimos 12 meses.
+
 ## Configuración
 
 [Angular](https://angular.io) Angular es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página.
